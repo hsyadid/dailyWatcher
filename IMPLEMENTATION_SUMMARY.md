@@ -3,6 +3,7 @@
 ## ✅ All Features Implemented & Tested
 
 ### 1. **Calendar Dashboard** ✅
+
 - **Monthly grid view** of workouts
 - **Color-coded routine indicators** (Upper 🔵, Lower 🟠, Push 🟣, Pull 🟢, Leg 🔴)
 - **Today highlight** in emerald
@@ -15,6 +16,7 @@
 ---
 
 ### 2. **Workout Mode — Exercise Display** ✅
+
 - **Sequential exercise rendering** for selected routine
 - **7 exercises in "Upper" routine** (default)
 - **Exercise card layout**:
@@ -27,6 +29,7 @@
 ---
 
 ### 3. **Progressive Overload Tracking** ✅
+
 - **"PREV" column** displays:
   - `—` for first-time exercises (no history) ✅
   - `20×8` format for exercises with previous sessions
@@ -40,6 +43,7 @@
 ---
 
 ### 4. **Set Tracking with Weight/Reps Inputs** ✅
+
 - **Weight input (kg)** — accepts decimal numbers
 - **Reps input** — accepts integer values
 - **Placeholder guidance**:
@@ -53,6 +57,7 @@
 ---
 
 ### 5. **Set Completion Checkbox** ✅
+
 - **Per-set complete toggle** — border-2 button with checkmark icon
 - **Visual feedback**:
   - Uncompleted: `border-zinc-600` (empty)
@@ -69,6 +74,7 @@
 ### 6. **Silent Rest Timer** ✅ 🎯 **KEY FEATURE**
 
 #### Timer Features:
+
 - **Visual circular countdown** — SVG circle with progress fill
 - **Linear progress bar** at top of page (green when running)
 - **Display format**: `1:30` (minutes:seconds)
@@ -77,6 +83,7 @@
 - **Duration controls**: `−` / `90s` / `+` buttons
 
 #### Timer Workflow:
+
 1. **Mark set as complete** → Timer appears (inactive state, shows "1:30")
 2. **Click "Start"** → Countdown begins
    - Button changes to gray "Skip"
@@ -85,7 +92,8 @@
 3. **Click "Skip"** → Stops timer immediately, returns to ready state
 4. **Uncheck set** while timer running → Timer cancels, hide timer UI
 
-**Test Status**: ✅ 
+**Test Status**: ✅
+
 - Timer appears when set marked complete
 - Countdown verified (1:30 → 1:26 counted down correctly)
 - Skip button stops timer
@@ -98,12 +106,14 @@
 ### 7. **Dynamic Flexibility** ✅
 
 #### Add Set:
+
 - **"+ Add Set" button** on each exercise card
 - Creates new set with auto-incrementing `set_number`
 - Pre-fills `target_reps` from existing sets
 - Immediately available for input
 
 #### Add Custom Exercise:
+
 - **"+ Add Exercise" button** at bottom of workout
 - **Bottom sheet modal** with:
   - Exercise name input (with placeholder guidance)
@@ -114,6 +124,7 @@
 - **Seamlessly integrates** into exercise list
 
 **Test Status**: ✅ Added "Cable Machine Chest" custom exercise
+
 - Modal opened correctly
 - Name input accepted text
 - Muscle group selector worked
@@ -124,7 +135,9 @@
 ---
 
 ### 8. **Default Routines (5 Routines Seeded)** ✅
+
 All routines prepopulated with exercises + target reps:
+
 - **Upper** (7 exercises)
 - **Lower** (6 exercises)
 - **Push** (6 exercises)
@@ -136,6 +149,7 @@ All routines prepopulated with exercises + target reps:
 ---
 
 ### 9. **Database Schema** ✅
+
 3-table design in Supabase:
 
 ```sql
@@ -154,6 +168,7 @@ get_previous_set_data(exercise_names[], before_date) → table
 ---
 
 ### 10. **Mobile-First Design** ✅
+
 - **Dark mode** (zinc-950 background, zinc-100 text)
   - Reduces eye strain in gym
   - Saves battery on OLED screens
@@ -176,26 +191,28 @@ get_previous_set_data(exercise_names[], before_date) → table
 
 ### 11. **Edge Cases Handled** ✅
 
-| Edge Case | Solution |
-|-----------|----------|
-| No previous history | Shows "Prev: —" gracefully ✅ |
-| Accidental timer trigger | Unchecking set cancels timer immediately ✅ |
-| Mid-workout modification | 800ms debounce saves weight/reps safely |
-| Browser refresh mid-session | Auto-save ensures no data loss |
-| Timezone issues | Uses `getFullYear/getMonth/getDate` (local time, never UTC) ✅ |
-| RLS errors | Add table to RLS disable list in SQL ✅ |
+| Edge Case                   | Solution                                                       |
+| --------------------------- | -------------------------------------------------------------- |
+| No previous history         | Shows "Prev: —" gracefully ✅                                  |
+| Accidental timer trigger    | Unchecking set cancels timer immediately ✅                    |
+| Mid-workout modification    | 800ms debounce saves weight/reps safely                        |
+| Browser refresh mid-session | Auto-save ensures no data loss                                 |
+| Timezone issues             | Uses `getFullYear/getMonth/getDate` (local time, never UTC) ✅ |
+| RLS errors                  | Add table to RLS disable list in SQL ✅                        |
 
 ---
 
 ## 🚀 Quick Start
 
 ### Step 1: Setup Supabase
+
 1. Create a new Supabase project
 2. Go to **SQL Editor**
 3. Copy & paste contents of `supabase/schema.sql`
 4. Run the script
 
 ### Step 2: Add Environment Variables
+
 ```bash
 # Copy template
 cp .env.local.example .env.local
@@ -206,7 +223,9 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=[your-anon-key]
 ```
 
 ### Step 3: Disable Row-Level Security
+
 In Supabase SQL Editor, run:
+
 ```sql
 ALTER TABLE workouts       DISABLE ROW LEVEL SECURITY;
 ALTER TABLE exercise_logs  DISABLE ROW LEVEL SECURITY;
@@ -214,6 +233,7 @@ ALTER TABLE set_logs       DISABLE ROW LEVEL SECURITY;
 ```
 
 ### Step 4: Run Dev Server
+
 ```bash
 npm run dev
 # → http://localhost:3000
