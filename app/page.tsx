@@ -218,7 +218,7 @@ export default function CalendarPage() {
           onClick={() => router.push(`/workout/${todayStr}`)}
           className="mt-6 w-full py-4 bg-emerald-600 active:bg-emerald-700 rounded-2xl text-white font-semibold text-base"
         >
-          Today's Workout
+          Todays Workout
         </button>
 
         {/* Legend */}
